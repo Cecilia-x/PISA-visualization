@@ -6,7 +6,7 @@ $( function() {
     });
 });
 
-data = d3.csv("group_by_country.csv", function(data){ 
+data = d3.csv("../data/group_by_country.csv", function(data){ 
         draw(data); changeSub("MATH");});
 
 function draw(data){
