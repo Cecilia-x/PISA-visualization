@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Education and Equity in the World: A Result from PISA</title>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.theme.css">
+    <link rel="stylesheet" href="css/jquery-ui.theme.css">
     <style>
     body { font-family: Segoe UI; }
     h1,h2 { font-family: Constantia }
@@ -35,15 +35,15 @@
 
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script type="text/javascript" src="js/d3_tip.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
 <h1>Education and Equity in the World</h1>
 <div class="exp">
-    <p>Across 61 countries paticipated in the PISA survey, the performance of students is related to their socioeconomic status. For countries with better social background (measured by ESCS index), generally their students outperform peers in lower ESCS country. But There are exceptions like Shanghai and Singapore.</p>
-    <p>This buble graph demonstrates such tendency. Each dot represents data of a region. Color of a circle represents the estimated effect of 1 point of increase of ESCS index to score (measured by coefficient of linear regression), while the size represents the power of influence of ESCS to score (measured by r-squared of linear regression).</p>
+    <p>Across 61 regions paticipated in the PISA survey,  advantage socioeconomic status of students is generally related to better performance. Also for countries with better overall social background (measured by ESCS index), their students are more likely outperform peers in other regions. But there are exceptions like Shanghai and Singapore, and students from some regions are more likely to cross the social barrier.</p>
+    <p>This buble chart demonstrates such pattern. Each bubble represents data of a region. </p>
 </div>
 <div id="select-subj">
     <span class="label adjust-height"><strong>Select Subject:</strong></span>
