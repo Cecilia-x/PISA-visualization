@@ -63,4 +63,6 @@ too complicated when trying to find such information. The control panel allows r
 ## Resources
 * [PISA 2012 data](http://www.oecd.org/pisa/data/pisa2012database-downloadabledata.htm)
 * [PISA 2012 technical report](http://www.oecd.org/pisa/pisaproducts/pisa2012technicalreport.htm)
+* [d3-tip.js](https://github.com/Caged/d3-tip)
+
 
