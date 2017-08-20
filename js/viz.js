@@ -14,29 +14,25 @@ function draw(data){
         height = 600,
         margin = 50;
         
-    var escs_scale = d3.scale.linear()
+    var escs_scale = d3.scaleLinear()
                        .domain([-2.5,1.5])
                        .range([0, width - 2 * margin]);
     
-    var score_scale = d3.scale.pow().exponent(2)
+    var score_scale = d3.scalePow().exponent(2)
                         .domain([0, d3.max(data, function(d){return d.MEANSCORE;})])
                         .range([height - 2 * margin, margin]);
-    var size_scale = d3.scale.sqrt()
+    var size_scale = d3.scaleSqrt()
                        .domain([0, d3.max(data, function(d){return d.RSQURED;})])
                        .range([0, 16]);
-    var coef_scale = d3.scale.linear()
+    var coef_scale = d3.scaleLinear()
                        .domain(d3.extent(data, function(d){return d.COEF;}))
                        .range(['navy', 'yellow']);
                        
-    var x_axis = d3.svg.axis()
-                 .scale(escs_scale)
-                 .orient('bottom')
+    var x_axis = d3.axisBottom(escs_scale)
                  .ticks(7);
                  
-    var y_axis = d3.svg.axis()
-                 .scale(score_scale)
-                 .tickValues([200, 250, 300, 350, 400, 450, 478, 500, 550, 600])
-                 .orient('right');
+    var y_axis = d3.axisRight(score_scale)
+                 .tickValues([200, 250, 300, 350, 400, 450, 478, 500, 550, 600]);
     
     /*Add Tips for each circle*/
     var tip = d3.tip()
