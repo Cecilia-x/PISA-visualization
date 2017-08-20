@@ -13,28 +13,26 @@ function draw(data){
     var width = 800,
         height = 600,
         margin = 50;
-        
-    var escs_scale = d3.scaleLinear()
-                       .domain([-2.5,1.5])
-                       .range([0, width - 2 * margin]);
-    
+
+    var escs_scale =  d3.scaleLinear()
+                        .domain([-2.5,1.5])
+                        .range([0, width - 2 * margin]);
     var score_scale = d3.scalePow().exponent(2)
                         .domain([0, d3.max(data, function(d){return d.MEANSCORE;})])
                         .range([height - 2 * margin, margin]);
-    var size_scale = d3.scaleSqrt()
-                       .domain([0, d3.max(data, function(d){return d.RSQURED;})])
-                       .range([0, 16]);
-    var coef_scale = d3.scaleLinear()
-                       .domain(d3.extent(data, function(d){return d.COEF;}))
-                       .range(['navy', 'yellow']);
+    var size_scale =  d3.scaleSqrt()
+                        .domain([0, d3.max(data, function(d){return d.RSQURED;})])
+                        .range([0, 16]);
+    var coef_scale =  d3.scaleLinear()
+                        .domain(d3.extent(data, function(d){return d.COEF;}))
+                        .range(['navy', 'yellow']);
                        
     var x_axis = d3.axisBottom(escs_scale)
-                 .ticks(7);
-                 
+                   .ticks(7);  
     var y_axis = d3.axisRight(score_scale)
-                 .tickValues([200, 250, 300, 350, 400, 450, 478, 500, 550, 600]);
+                   .tickValues([200, 250, 300, 350, 400, 450, 478, 500, 550, 600]);
     
-    /*Add Tips for each circle*/
+    /*Add tips for each circle*/
     var tip = d3.tip()
                 .attr('class','tip')
                 .offset([10,0])
@@ -48,15 +46,16 @@ function draw(data){
                 
     /*Build frame and axis*/
     svg = d3.select("#graph-area")
-        .append('svg').attr('width', width).attr('height', height);
+            .append('svg').attr('width', width).attr('height', height);
     svg.append('g')
-          .attr('transform', mov(margin,height-margin))
-          .call(x_axis)
-          .attr('class','xaxis');
+            .attr('transform', mov(margin,height-margin))
+            .call(x_axis)
+            .attr('class','xaxis');
     svg.append('g')
-          .attr('transform', mov(width-margin, margin))
-          .call(y_axis)
-          .attr('class','yaxis');
+            .attr('transform', mov(width-margin, margin))
+            .call(y_axis)
+            .attr('class','yaxis');
+    
     /*Axis Titles*/
     svg.append("text").text("Mean").attr("x",width-margin).attr('y',margin).attr('class','axis-title');
     svg.append("text").text("Score").attr("x",width-margin).attr('y',margin+15).attr('class','axis-title');
@@ -64,7 +63,7 @@ function draw(data){
                       .attr("x",margin+escs_scale(-1.5)).attr('y',height-10)
                       .attr('class','axis-title');
    
-    /*Add Mean line*/
+    /*Add avereage line*/
     mean_sc = d3.mean(data, function(d){return d.MEANSCORE;})
     mean_es = d3.mean(data, function(d){return d.MEANESCS;})
     svg.append('line')
@@ -84,9 +83,11 @@ function draw(data){
        .attr('y2', height-margin-30).attr('x2', escs_scale(mean_es)+margin)
        .attr('stroke', 'black');
     var v_average_line_text = svg.append('text').text("World")
-                      .attr("x", escs_scale(mean_es)+margin).attr('y', height-margin-20).attr('class', 'axis-title')
+                      .attr("x", escs_scale(mean_es)+margin).attr('y', height-margin-20)
+                      .attr('class', 'axis-title')
                       .attr('fill', 'grey');
-    v_average_line_text.append('tspan').text('Average ESCS').attr('dx', '-6em').attr('dy', '1em');
+    v_average_line_text.append('tspan').text('Average ESCS')
+                       .attr('dx', '-6em').attr('dy', '1em');
 
     /*Explanation for Areas*/
     svg.append("text").text("Disadvantage background, lower score")
@@ -174,9 +175,8 @@ function addLegend(svg, x, y){
 function inRange(x, rng){
     if(x >= rng[0] && x <= rng[1]){
         return true;
-    }else{
-        return false;
     }
+    return false;
 }
 
 function filter_args(coef_rng, pow_rng){
