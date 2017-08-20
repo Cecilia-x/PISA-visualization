@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Education and Equity in the World: A Result from PISA</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery-ui.theme.css">
+    <style>
+    body { font-family: Segoe UI; }
+    h1,h2 { font-family: Constantia }
+    svg > circle { stroke:white; }
+    fieldset { border:None; }
+    .exp { width:780px; }
+    .xaxis path { stroke:black; fill:None; }
+    .yaxis path { stroke:None; fill:None; }
+    .tick line { stroke:black; }
+    .tick text { font-size:12px; }
+    .bottom { float:right; }
+    .tip { line-height:1;  padding:12px; font-size:12px;
+          background:black;color:white;border-radius:2px; }
+    .tip .cnt { font-size:14px; }
+    .tip.n:after { margin:-1px 0 0 0; top:100%; left:0; }
+    .ui-button { border:1px solid grey; width:100px; }
+    
+    #select-coef, #select-rsq { position:relative; display:block; margin-top:4px;}
+    #graph-area {margin-top:20px;}
+    
+    .axis-title { font-size:12px; font-weight:bold; }
+    .wrapper {display:inline-block; width:300px; float:left; padding-left:10px;}
+    .label { float:left; margin-left:14px; margin-right:10px;}
+    .section { float:none; clear:both; padding: 10px 0px 20px 0; }
+    .adjust-height { padding-top:10px;}
+    .legend-title { font-size:10px; }
+    </style>
+
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/d3_tip.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+<h1>Education and Equity in the World</h1>
+<div class="exp">
+    <p>Across 61 countries paticipated in the PISA survey, the performance of students is related to their socioeconomic status. For countries with better social background (measured by ESCS index), generally their students outperform peers in lower ESCS country. But There are exceptions like Shanghai and Singapore.</p>
+    <p>This buble graph demonstrates such tendency. Each dot represents data of a region. Color of a circle represents the estimated effect of 1 point of increase of ESCS index to score (measured by coefficient of linear regression), while the size represents the power of influence of ESCS to score (measured by r-squared of linear regression).</p>
+</div>
+<div id="select-subj">
+    <span class="label adjust-height"><strong>Select Subject:</strong></span>
+    <form action="#">
+        <fieldset>
+            <label for="MATH">Math</label>
+            <input type="radio" name="subj" id="MATH" checked="True">
+            <label for="READ">Reading</label>
+            <input type="radio" name="subj" id="READ">
+            <label for="SCIE">Science</label>
+            <input type="radio" name="subj" id="SCIE">
+        </fieldset>
+    </form>
+</div>
+
+<div class="section">
+    <span class="label"><strong>Coeficient:</strong> Flatter(11.4)</span>
+    <div class="wrapper">
+        <span id="select-coef"></span>
+    </div>
+    <div class="label">Steeper(57.3)</div>
+</div>
+
+<div class="section">
+    <span class="label"><strong>Power of Influence:</strong> Minor(0.01)</span>
+    <div class="wrapper">
+        <span id="select-rsq"></span>
+    </div>
+    <div class="label">Greater(0.33)</div>
+</div>
+
+<div id="graph-area"></div>
+<svg display="None">
+    <g id="legend">
+        <g id="legend-coef" class="svg-legend">
+            <g transform="translate(5,4)">
+                <text class="legend-title" transform="translate(0,20)">Coeficient of</text>
+                <text class="legend-title" transform="translate(0,30)">ESCS and score</text>
+            </g>
+            <defs>
+                <linearGradient id="ldg-gradient">
+                    <stop stop-color="navy" offset="0%"></stop>
+                    <stop stop-color="yellow" offset="100%"></stop>
+                </linearGradient>
+            </defs>
+            <rect width="70" height="20" fill="url(#ldg-gradient)" transform="translate(120,16)"></rect>
+            <g transform="translate(112,10)">
+                <text class="legend-title">11.4</text>
+                <text transform="translate(70,0)" class="legend-title">57.4</text>
+            </g>
+        </g>
+        <g class="svg-legend" id="legend-pow" transform="translate(0,60)">
+            <g transform="translate(5,0)">
+                <text class="legend-title" transform="translate(0,10)">Power of Influence</text>
+                <text class="legend-title" transform="translate(0,20)">of ESCS to score</text>
+                <text class="legend-title" transform="translate(0,30)">(measured by r-squred)</text>
+            </g>
+            <g transform="translate(120,0)">
+                <text class="legend-title" >0.01</text>
+                <text class="legend-title" transform="translate(40,0)">0.33</text>
+            </g>
+            <g transform="translate(130,20)">
+                <circle r="3.3452253456246925" stroke-width="1" fill="none" stroke="black"></circle>
+                <circle r="16" stroke-width="1" transform="translate(40,0)" fill="none" stroke="black"></circle>
+            </g>
+        </g>
+    </g>
+</svg>
+<div class="footnote">
+    <p>Source: PISA (OECD Program of International Student Assessment); Created by Cecilia Xie</p>
+</div>
+<script type="text/javascript" src="js/viz.js"></script>
+</body>
