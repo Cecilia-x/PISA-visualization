@@ -20,9 +20,9 @@ The project built linear regression models for each region, coeffienct means how
 
     Bubble chart can convey 4 dimensions of quantitative data. It is suitable for this project.
 
-* CHOOSE OF PROJECTION:
+* CHOOSE OF VISUAL ENCODING:
 
-    As the main concern is the relation between social background and test result, the two axises use values of ESCS and score, because distance is the best way to convey quantitative information, by comparing each bubble's position readeres could learn better about relationship between ESCS and score. 
+    As the main concern is the relation between social background and test result, the two axises use values of ESCS and score, because distance is the best way to convey quantitative information, by comparing each bubble's position readeres could learn easier about relationship between ESCS and score. 
 
     Although size is not desirable for representing quantitative data, in seismology it has been used for representing earthquake magnitude. People are more readily to connect size to strongness. Therefore I choose size to representing power of influence, and let coefficient represented by color. 
 
@@ -46,11 +46,11 @@ too complicated when trying to find such information. The control panel allows r
 
 2. When slide one control bar, another will reset, but readers want two bars to work together.
 
-    Solution: change behavior of slide bars, so that when one change values the other's range will work as well.
+    Solution: change behavior of slide bars, so that when one change values the other's range will still applies as well.
 
 3. Bubble in legend are easily confused with other bubbles in the graph.
 
-    Solution: Add background color to the legend so that it can be visually seperated to the rest of the graph.
+    Solution: Add background color to the legend so that it can visually seperate from the rest of the graph.
 
 ## Resources
 * [PISA 2012 data](http://www.oecd.org/pisa/data/pisa2012database-downloadabledata.htm)
