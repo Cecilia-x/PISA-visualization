@@ -40,15 +40,23 @@ Readers might concern which regions have the most equal or unequal education sys
 too complicated when trying to find such information. The control panel allows readers to filter by selecting different coefficient and power of influence range from sliders, or view different subjects from clicking buttons. In doing so it would be easier to see if educational equity relative to students' performance. Also this filter could allow readers view bubbles overlapped by others.
 
 ## Feedback
-1. Legend is confusing. The one for coefficient is from low to high, but another is reversed.
+1. The locations of bubbles are wrong. They all offset to higher.
+
+    Solution: this bug is caused by wrong score scale. Fixed in the second version of viz.js.
+
+2. Readers want to know the exact mean score of the world.
+
+    Solution: added mean socre to tick values of y axis.
+    
+3. Legends are confusing. The one for coefficient is from low to high, but another is reversed.
 
     Solution: change position of power of influence legend, put the smaller circle in the left. Also created an illustration of 2 extreme cases beside, one is lowest coefficient and power of influence, another is the opposite.
 
-2. When slide one control bar, another will reset, but readers want two bars to work together.
+4. When slide one control bar, another will reset, but readers want two bars to work together.
 
     Solution: change behavior of slide bars, so that when one change values the other's range will still applies as well.
 
-3. Bubble in legend are easily confused with other bubbles in the graph.
+5. Bubbles in legend are easily confused with other bubbles in the graph.
 
     Solution: Add background color to the legend so that it can visually seperate from the rest of the graph.
 
