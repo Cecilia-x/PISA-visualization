@@ -133,15 +133,9 @@ function draw(data){
         max: coef_extent[1] * 1.01,
         min: coef_extent[0] * 1.01,
         slide: function(event, ui){
-            $("svg>circle[substatus=sub-show]").each(function(){
-                var coef = +$(this).attr('coef');
-                if(coef >= ui.values[0] && coef <= ui.values[1]){
-                    $(this).show();
-                }else{
-                    $(this).hide();
-                }
-            });
-            $("#select-rsq").slider({values: rsq_extent});
+            var coef_rng = ui.values;
+            var pow_rng = $("#select-rsq").slider("values");
+            filter_args(coef_rng, pow_rng);
         }
     });
     
@@ -152,15 +146,9 @@ function draw(data){
         step: 0.01,
         values: rsq_extent,
         slide: function(event, ui){
-            $("svg>circle[substatus=sub-show]").each(function(){
-                var rsq = +$(this).attr('rsq');
-                if(rsq >= ui.values[0] && rsq <= ui.values[1]){
-                    $(this).show();
-                }else{
-                    $(this).hide();
-                }
-            });
-            $("#select-coef").slider({values: coef_extent});
+            var coef_rng = $("#select-coef").slider("values");
+            var pow_rng = ui.values;
+            filter_args(coef_rng, pow_rng);
         }
     }); 
    
@@ -172,6 +160,7 @@ function changeSub(subject){
     $("svg>circle[subject='"+subject+"']").show().attr('substatus','sub-show');
 };
 
+/*Helper function for locating legends*/
 function mov(x,y){
         var s1 = "translate(";
         var s2 = ",";
@@ -184,3 +173,24 @@ function addLegend(svg, x, y){
     svg.append(legend);
     legend.attr('transform', mov(x, y));
 };
+
+/*Function for filtering dots on the graph*/
+function inRange(x, rng){
+    if(x >= rng[0] && x <= rng[1]){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function filter_args(coef_rng, pow_rng){
+    $("svg>circle[substatus=sub-show]").each(function(){
+        var coef = +$(this).attr('coef');
+        var rsq = +$(this).attr('rsq');
+        if(inRange(coef, coef_rng) && inRange(rsq, pow_rng)){
+            $(this).show();
+        }else{
+            $(this).hide();
+        };
+    });
+}
